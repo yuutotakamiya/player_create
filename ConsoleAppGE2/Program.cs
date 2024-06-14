@@ -12,17 +12,24 @@ namespace ConsoleAppGE2
         
         private class Player
         {
-            //Player情報作成用の関数
-            private void CreatePlayer()
-            {
 
+            private string name = "";
+
+            private int age = 10;
+
+            //Player情報作成用の関数
+            private void CreatePlayer( string name, int age)
+            {
+                this.name = name;
+                this.age = age;
             }
 
             //Player情報表示用の関数
             private void ShowPlayer()
             {
-
+                Console.WriteLine("名前:{0}年齢:{1}");
             }
+           
         }
         static void Main(string[] args)
         {

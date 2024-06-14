@@ -27,21 +27,19 @@ namespace ConsoleAppGE2
             List<Player> players = new List<Player>();
 
             // 1人目のプレイヤー情報を登録
-            Console.Write("1人目のプレイヤーの名前を入力してください:");
+            Console.WriteLine("一番目のプレイヤー情報の登録");
+            Console.Write("名前　>");
             string name1 = Console.ReadLine();
-            Console.Write("1人目のプレイヤーのHPを入力してください:");
-            int age1 = int.Parse(Console.ReadLine());
-            Console.Write("1人目のプレイヤーの攻撃力を入力してください:");
-            int attack1 = int.Parse(Console.ReadLine());
+            int age1 = GetIntFromUser("HP >");
+            int attack1 = GetIntFromUser("攻撃力 >");
             players.Add(new Player(name1, age1,attack1));
 
             // 2人目のプレイヤー情報を登録
-            Console.Write("2人目のプレイヤーの名前を入力してください:");
+            Console.WriteLine("二番目のプレイヤー情報の登録");
+            Console.Write("名前　>");
             string name2 = Console.ReadLine();
-            Console.Write("2人目のプレイヤーのHPを入力してください:");
-            int hp2 = int.Parse(Console.ReadLine());
-            Console.Write("2人目のプレイヤーの攻撃力を入力してください:");
-            int attack2 = int.Parse(Console.ReadLine());
+            int hp2 = GetIntFromUser("HP >");
+            int attack2 = GetIntFromUser("攻撃力 >");
             players.Add(new Player(name2, hp2,attack2));
 
 
@@ -55,6 +53,26 @@ namespace ConsoleAppGE2
 
             //コンソールをすぐ閉じないようにする
             Console.ReadLine();
+        }
+       
+        static int GetIntFromUser(string message)
+        {
+            int result;
+            //整数から文字列に変換したときの条件
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out result))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("もう一度入力してください。");
+                }
+            }
+            return result;
         }
     }
 }

@@ -7,35 +7,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppGE2
 {
-    internal class Program
+    internal class Program : Player
     {
-        
-        private class Player
+        public Program(string name, int hp, int attack) : base(name, hp, attack)
         {
-
-            private string name = "";
-
-            private int age = 0;
-
-            //Player情報作成用の関数
-           private void CreatePlayer( string name, int age)
-           {
-                this.name = name;
-                this.age = age;
-           }
-
-            //Player情報表示用の関数
-            public void ShowPlayer()
-            {
-                Console.WriteLine("名前:{0}年齢:{1}",name,age);
-            }
-
-            public Player(string name, int age)
-            {
-                CreatePlayer(name, age);
-            }
-
+            this.name = name;
+            this.hp = hp;
+            this.attack = attack;
         }
+
+        public override void ShowPlayer()
+        {
+            Console.WriteLine("名前: {0}, HP: {1}, 攻撃力: {2}", name, hp,attack);
+        }
+
         static void Main(string[] args)
         {
 
@@ -44,16 +29,20 @@ namespace ConsoleAppGE2
             // 1人目のプレイヤー情報を登録
             Console.Write("1人目のプレイヤーの名前を入力してください:");
             string name1 = Console.ReadLine();
-            Console.Write("1人目のプレイヤーの年齢を入力してください:");
+            Console.Write("1人目のプレイヤーのHPを入力してください:");
             int age1 = int.Parse(Console.ReadLine());
-            players.Add(new Player(name1, age1));
+            Console.Write("1人目のプレイヤーの攻撃力を入力してください:");
+            int attack1 = int.Parse(Console.ReadLine());
+            players.Add(new Player(name1, age1,attack1));
 
             // 2人目のプレイヤー情報を登録
             Console.Write("2人目のプレイヤーの名前を入力してください:");
             string name2 = Console.ReadLine();
-            Console.Write("2人目のプレイヤーの年齢を入力してください:");
-            int age2 = int.Parse(Console.ReadLine());
-            players.Add(new Player(name2, age2));
+            Console.Write("2人目のプレイヤーのHPを入力してください:");
+            int hp2 = int.Parse(Console.ReadLine());
+            Console.Write("2人目のプレイヤーの攻撃力を入力してください:");
+            int attack2 = int.Parse(Console.ReadLine());
+            players.Add(new Player(name2, hp2,attack2));
 
 
             // 登録したプレイヤー情報を表示
@@ -62,6 +51,9 @@ namespace ConsoleAppGE2
                 player.ShowPlayer();
             }
 
+            Console.Write("ENTERキーを押してください");
+
+            //コンソールをすぐ閉じないようにする
             Console.ReadLine();
         }
     }
